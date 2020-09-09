@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm'
 import { User } from './entity/User';
 import { Email } from './entity/Email';
 import { EmailModule } from './email/email.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -16,7 +17,7 @@ import { EmailModule } from './email/email.module';
     port: 5432,
     entities: [User,Email],
     synchronize: true
-  }),AuthModule, LoginModule, EmailModule,],
+  }),AuthModule, LoginModule, EmailModule, UserModule,],
   controllers: [],
   providers: [],
 })

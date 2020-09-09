@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { User } from 'src/entity/User';
 import { Repository } from 'typeorm';
 import { JwtService } from '@nestjs/jwt'
+import { compare } from 'bcrypt'
 
 @Injectable()
 export class AuthService {
@@ -12,8 +13,8 @@ export class AuthService {
     ){}
 
     async validateUser(email: string, password: string): Promise<any>{
-        const user = await this.userRepository.findOne({where:{email,password}})
-        if(user && user.password == password){
+        const user = await this.userRepository.findOne({where:{email}})
+        if(user && await compare(password,user.password)){
             const { password, ...result } = user
             return result
         }
