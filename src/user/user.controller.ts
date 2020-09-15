@@ -17,9 +17,5 @@ export class UserController {
         return this.userService.create(name,email,password)
     }
 
-    @UseGuards(JwtAuthGuard)
-    @Delete()
-    destroy(@Request() req): Promise<DeleteResult>{
-        return this.userService.destroy(req.user.id)
-    }
+
 }
