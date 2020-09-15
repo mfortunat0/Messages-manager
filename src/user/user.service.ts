@@ -9,7 +9,7 @@ export class UserService {
     constructor(@InjectRepository(User) private userRepository: Repository<User>){}
 
     async create(name: string, email:string, password: string): Promise<User>{
-        if(!this.userRepository.findOne({where:{email}})){
+        if(!await this.userRepository.findOne({where:{email}})){
             const user = new User()
             user.name = name
             user.email = email
