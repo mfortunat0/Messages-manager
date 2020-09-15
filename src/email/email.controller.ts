@@ -1,7 +1,7 @@
 import { Controller, Get, Request, UseGuards, Post, Body } from '@nestjs/common';
 import { EmailService } from './email.service';
-import { Email } from 'src/entity/Email';
-import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
+import { Email } from '../entity/Email';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 
 @Controller('email')
 export class EmailController {

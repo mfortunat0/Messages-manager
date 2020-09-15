@@ -1,7 +1,7 @@
 import { Injectable, ConflictException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { User } from 'src/entity/User';
+import { Repository, DeleteResult } from 'typeorm';
+import { User } from '../entity/User';
 import { hash } from 'bcrypt'
 
 @Injectable()

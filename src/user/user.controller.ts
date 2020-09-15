@@ -1,6 +1,8 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, Delete, UseGuards, Request } from '@nestjs/common';
 import { UserService } from './user.service';
-import { User } from 'src/entity/User';
+import { User } from '../entity/User';
+import { DeleteResult } from 'typeorm';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard'
 
 @Controller('user')
 export class UserController {
@@ -13,5 +15,11 @@ export class UserController {
         @Body('password') password: string
     ): Promise<User>{
         return this.userService.create(name,email,password)
+    }
+
+    @UseGuards(JwtAuthGuard)
+    @Delete()
+    destroy(@Request() req): Promise<DeleteResult>{
+        return this.userService.destroy(req.user.id)
     }
 }

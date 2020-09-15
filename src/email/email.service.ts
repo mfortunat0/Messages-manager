@@ -1,8 +1,8 @@
 import { Injectable, BadRequestException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Email } from 'src/entity/Email';
+import { Email } from '../entity/Email';
 import { Repository } from 'typeorm';
-import { User } from 'src/entity/User';
+import { User } from '../entity/User';
 
 @Injectable()
 export class EmailService {
