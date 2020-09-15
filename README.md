@@ -1,75 +1,94 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
+<h1 align=center>Simple email manager</h1>
+<h3 align=center>
+<a href="https://whimsical.com/WgFJD3Fiavvhq4t6oJ6oJD">Flowchart</a>
+</h3>
+<h4>Libraries:</h4>
+For Cryptography: <a href="https://www.npmjs.com/package/bcrypt">Bcrypt</a>
+<br>
+For Database ORM: <a href="https://www.npmjs.com/package/typeorm">Typeorm</a>
+,
+<a href="https://www.npmjs.com/package/@nestjs/typeorm">Typeorm Module<a/>
+,
+<a href="https://www.npmjs.com/package/pg">PG</a>
+<br>
+For Authenticate and Strategy: <a href="https://www.npmjs.com/package/passport">Passport</a>
+,
+<a href="https://www.npmjs.com/package/passport">Passport Module</a>
+,
+<a href="https://www.npmjs.com/package/passport-local">Passport Local</a>
+,
+<a href="https://www.npmjs.com/package/passport-jwt">Passport Jwt</a>
+<br>
+For Tests: <a href="https://www.npmjs.com/package/jest">Jest</a>
+and
+<a href="https://www.npmjs.com/package/supertest">Supertest</a>
+<br><br><br><br>
+<h2 align=center>Start</h2>
+<h4 align=center>First install dependecies</h4>
+<p>If you use NPM
 
-[travis-image]: https://api.travis-ci.org/nestjs/nest.svg?branch=master
-[travis-url]: https://travis-ci.org/nestjs/nest
-[linux-image]: https://img.shields.io/travis/nestjs/nest/master.svg?label=linux
-[linux-url]: https://travis-ci.org/nestjs/nest
-  
-  <p align="center">A progressive <a href="http://nodejs.org" target="blank">Node.js</a> framework for building efficient and scalable server-side applications, heavily inspired by <a href="https://angular.io" target="blank">Angular</a>.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/dm/@nestjs/core.svg" alt="NPM Downloads" /></a>
-<a href="https://travis-ci.org/nestjs/nest"><img src="https://api.travis-ci.org/nestjs/nest.svg?branch=master" alt="Travis" /></a>
-<a href="https://travis-ci.org/nestjs/nest"><img src="https://img.shields.io/travis/nestjs/nest/master.svg?label=linux" alt="Linux" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#5" alt="Coverage" /></a>
-<a href="https://gitter.im/nestjs/nestjs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=body_badge"><img src="https://badges.gitter.im/nestjs/nestjs.svg" alt="Gitter" /></a>
-<a href="https://opencollective.com/nest#backer"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec"><img src="https://img.shields.io/badge/Donate-PayPal-dc3d53.svg"/></a>
-  <a href="https://twitter.com/nestframework"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+```shell
+npm install
+```
+<p>If you use Yarn
 
-## Description
+```shell
+yarn
+```
+<br>
+<h4>Run docker-compose</h4>
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+```shell
+docker-compose up
+```
+<br>
+<h4>Start the project from the script</h4>
+NPM
 
-## Installation
-
-```bash
-$ npm install
+```shell
+npm start
+```
+Yarn
+```shell
+yarn start
 ```
 
-## Running the app
+<h2 align=center>Test yourself</h2>
+<h4 align=center>Create a new user</h4>
+Send a request to route /user containing an application/json {"name","email","password"} with the POST method like this:
 
-```bash
-# development
-$ npm run start
+```shell
+curl -X POST http://localhost:3000/user -d '{"name":"example","email": "example@gmail.com", "password": "1234"}' -H "Content-Type: application/json"
+```
+<br><br>
+<h4 align=center>Generate new token</h4>
+Send a request to route /login containing an application/json {"email","password"} with the POST method like this:
 
-# watch mode
-$ npm run start:dev
+```shell
+curl -X POST http://localhost:3000/login -d '{"email": "example@gmail.com", "password": "1234"}' -H "Content-Type: application/json"
+```
+<br><br>
+<h4 align=center>Get Emails</h4>
+Send a request to route /email containing token Bearer with GET method:
 
-# production mode
-$ npm run start:prod
+```shell
+curl -X GET http://localhost:3000/email -H Authorization: Bearer [token]"
+```
+<br><br>
+<h4 align=center>Send email</h4>
+Send a request to route /email/send containing an application/json {"to","content"}, Bearer token with POST method:
+
+```shell
+curl -X POST http://localhost:3000/email/send -d '{"to":"example@gmail.com","content":"hello world"}' -H "Cobtebt-type: application/json" -H "Authorization: Bearer [token]"
 ```
 
-## Test
+<br><br><br>
+<h2 align=center>If you want adapt project for you</h2>
+Edit <b>ormconfig.json</b> file for you
 
-```bash
-# unit tests
-$ npm run test
+<a href="https://typeorm.io/#/using-ormconfig">More information about ormconfig.json click here</a>
 
-# e2e tests
-$ npm run test:e2e
+Edit Typeorm Module in <b>app.module.ts</b> file for configurations equal your ormconfig.json file
 
-# test coverage
-$ npm run test:cov
-```
+<a href="https://docs.nestjs.com/recipes/sql-typeorm">More information about TypeormModule click here</a>
 
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-  Nest is [MIT licensed](LICENSE).
