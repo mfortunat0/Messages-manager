@@ -1,4 +1,4 @@
-<h1 align=center>Simple email manager</h1>
+<h1 align=center>Messages manager</h1>
 <h3 align=center>
 <a href="https://whimsical.com/WgFJD3Fiavvhq4t6oJ6oJD">Flowchart</a>
 </h3>
